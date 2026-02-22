@@ -1,11 +1,18 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
+/**
+ * Main application configuration object for Angular providers.
+ *
+ * @remarks
+ * This configuration sets up global error listeners, routing, and HTTP client with fetch support.
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
-  ]
+    provideRouter(routes),
+    provideHttpClient(withFetch()),
+  ],
 };
